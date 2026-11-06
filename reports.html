@@ -1,0 +1,94 @@
+ 
+{% extends "base.html" %}
+{% block title %}Reports | AgriAnalytics{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">AGRICULTURAL INSIGHTS</p>
+        <h1>Crop Production Reports</h1>
+        <p>Compare crop production across years and regions.</p>
+    </div>
+    <div class="hero-icon">📈</div>
+</section>
+
+{% if db_error %}
+<div class="alert error">{{ db_error }}</div>
+{% endif %}
+
+<section class="panel">
+    <h2>Crop-wise Production</h2>
+
+    {% if crop_report %}
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Crop</th>
+                    <th>Area Unit</th>
+                    <th>Production Unit</th>
+                    <th>Records</th>
+                    <th>Total Area</th>
+                    <th>Total Production</th>
+                    <th>Average Yield</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in crop_report %}
+                <tr>
+                    <td>{{ row.crop }}</td>
+                    <td>{{ row.area_unit }}</td>
+                    <td>{{ row.production_unit }}</td>
+                    <td>{{ row.records }}</td>
+                    <td>{{ row.total_area }}</td>
+                    <td>{{ row.total_production }}</td>
+                    <td>{{ row.average_yield }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>No crop report is available yet. Upload a CSV file to generate reports.</p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Region-wise Production</h2>
+
+    {% if region_report %}
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Year</th>
+                    <th>Production Unit</th>
+                    <th>Total Production</th>
+                    <th>Total Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in region_report %}
+                <tr>
+                    <td>{{ row.region }}</td>
+                    <td>{{ row.year }}</td>
+                    <td>{{ row.production_unit }}</td>
+                    <td>{{ row.total_production }}</td>
+                    <td>{{ row.total_area }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>No regional report is available yet.</p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Analyze More Data</h2>
+    <p>Upload another agricultural CSV dataset to add records and refresh your reports.</p>
+    <a class="btn" href="{{ url_for('upload') }}">Upload Crop Data</a>
+</section>
+{% endblock %}

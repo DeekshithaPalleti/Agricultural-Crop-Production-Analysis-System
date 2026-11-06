@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+
+{% block title %}Upload Data | AgriAnalytics{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">DATA MANAGEMENT</p>
+        <h1>Upload Crop Data</h1>
+        <p>Import agricultural records from a CSV file for analysis.</p>
+    </div>
+    <div class="hero-icon">📊</div>
+</section>
+
+<section class="panel">
+    <h2>Choose your CSV file</h2>
+    <p>Your file should contain crop names, regions, years, cultivated area and production.</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="dataset">Select CSV file</label>
+        <input
+            type="file"
+            id="dataset"
+            name="dataset"
+            accept=".csv"
+            required
+        >
+
+        <button class="btn" type="submit">Upload and Analyze</button>
+    </form>
+</section>
+
+<section class="panel">
+    <h2>Required CSV columns</h2>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>crop</td><td>Rice</td></tr>
+                <tr><td>region</td><td>Coastal</td></tr>
+                <tr><td>year</td><td>2024</td></tr>
+                <tr><td>cultivated_area</td><td>100</td></tr>
+                <tr><td>production</td><td>420</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Optional columns: rainfall, area_unit, production_unit and rainfall_unit.</p>
+</section>
+{% endblock %}
