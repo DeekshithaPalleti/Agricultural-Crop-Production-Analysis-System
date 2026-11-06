@@ -1,0 +1,11 @@
+
+crop,region,year,cultivated_area,production,rainfall,area_unit,production_unit,rainfall_unit
+Rice,Coastal,2020,100,420,850,hectare,tonne,mm
+Rice,Coastal,2021,110,451,900,hectare,tonne,mm
+Rice,Coastal,2022,115,483,875,hectare,tonne,mm
+Maize,Inland,2020,80,360,620,hectare,tonne,mm
+Maize,Inland,2021,85,391,650,hectare,tonne,mm
+Maize,Inland,2022,90,405,640,hectare,tonne,mm
+Cotton,Central,2020,60,108,700,hectare,tonne,mm
+Cotton,Central,2021,62,117,720,hectare,tonne,mm
+Cotton,Central,2022,65,123,710,hectare,tonne,mm
